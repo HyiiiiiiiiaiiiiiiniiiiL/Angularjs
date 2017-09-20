@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HelloApp">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <table border="1" ng-controller="WorldController">
+    <tr>
+      <td>用户名</td>
+      <td>
+        <input type="text" ng-model="user.username">
+      </td>
+    </tr>
+    <tr>
+      <td>密码</td>
+      <td>
+        <input type="password" ng-model="user.password">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="button" ng-click="login()" value="登陆">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{{message}}</td>
+    </tr>
+  </table>
+  <script src='../bower_components/angular/angular.js'></script>
+  <script>
+    var app = angular.module('HelloApp',[]);
+    app.controller('WorldController',['$scope',function($scope){
+      $scope.user = {
+        username:'',
+        password:''
+      };
+      $scope.login = function(){
+        console.log($scope.user);
+      };
+      $scope.message = '请输入用户名';
+      $scope.$watch('user.username',function(now,old){
+        console.log('new name:'+now);
+        console.log('old name:'+old);
+        if(now){
+          if(now.length<=6){
+            $scope.message = '输入的用户名不合法';
+          }else{
+            $scope.message = '';
+          }
+        }else{
+           $scope.message = '请输入用户名';
+        }
+      });
+    }]);
+
+  </script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="App1Controller">
+    <input type="button" value="按钮1" ng-click="do1()">
+  </div>
+  <div ng-controller="App2Controller">
+    <input type="button" value="按钮2" ng-click="do2()">
+  </div>
+  <script src='../bower_components/angular/angular.js'></script>
+  <script>
+    /*零件1*/
+    var app1 = angular.module('myApp1', []);
+    app1.controller("App1Controller", ['$scope', function($scope) {
+      $scope.do1 = function() {
+        console.log("app111111");
+      };
+    }]);
+    /*零件2*/
+    var app2 = angular.module('myApp2', []);
+    app2.controller("App2Controller", ['$scope', function($scope) {
+      $scope.do2 = function() {
+        console.log("app222222222");
+      };
+    }]);
+    /*my app module description*/
+    angular.module('myApp', ['myApp1', 'myApp2']);
+  </script>
+</body>
+
+</html>

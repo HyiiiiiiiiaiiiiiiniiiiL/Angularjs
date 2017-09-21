@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ng-repeat指令</title>
+</head>
+
+<body ng-app='myApp'>
+  <!--ng-repeat会便利数组中的每个元素，分别创建li-->
+  <ul ng-controller='ListController'>
+    <li ng-repeat='item in apple' data-id='{{item.id}}'>
+      <span>{{$first?'开始':''}}</span>
+      <strong>{{item.name}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span>{{item.age}}</span>
+      <strong>{{$last?'没有了':''}}</strong>
+    </li>
+  </ul>
+  <script src='../bower_components/angular/angular.js'></script>
+  <script>
+    angular.module('myApp', [])
+      .controller('ListController', ['$scope', function($scope) {
+        $scope.apple = [];
+        for (var i = 1; i < 10; i++) {
+          $scope.apple[$scope.apple.length] = {
+            id: i,
+            name: "apple" + i,
+            age: 20 + i
+          };
+        }
+      }]);
+  </script>
+</body>
+
+</html>

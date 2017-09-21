@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ng-bind 指令</title>
+</head>
+
+<body ng-app ng-init="username='<h1>shit</h1>'">
+  <!--<strong>{{username}}</strong>-->
+  <!-- ng-bind指令在绑定的值包含HTML时会转义，为了安全（跨站脚本攻击） -->
+  <strong ng-bind="username"></strong>
+</body>
+<script src="../bower_components/angular/angular.js"></script>
+
+</html>

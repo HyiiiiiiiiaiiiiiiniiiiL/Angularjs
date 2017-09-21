@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ng-app指令</title>
+</head>
+
+<body>
+  <div ng-app="myApp1" ng-controller="App1Controller">
+    <input type="button" value="按钮1" ng-click="do1()">
+  </div>
+  <div ng-app="myApp2" ng-controller="App2Controller">
+    <input type="button" value="按钮2" ng-click="do2()">
+  </div>
+  <script src="../bower_components/angular/angular.min.js"></script>
+  <script>
+    var app1 = angular.module('myApp1', []);
+    app1.controller("App1Controller", ['$scope', function($scope) {
+      $scope.do1 = function() {
+        console.log('myApp1');
+      };
+    }]);
+
+    var app2 = angular.module('myApp2', []);
+    app2.controller("App2Controller", ['$scope', function($scope) {
+      $scope.do2 = function() {
+        console.log('myApp2');
+      };
+    }]);
+    /*手动让第二个div被myApp2管理*/
+    angular.bootstrap(document.querySelector('[ng-app="myApp2"]'), ['myApp2']);
+  </script>
+</body>
+
+</html>

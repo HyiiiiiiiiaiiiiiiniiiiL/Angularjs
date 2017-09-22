@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>ng-title指令</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+
+<body ng-app>
+  <select ng-model='selected'>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <div ng-switch="selected">
+    <div ng-switch-when="1">你选择的是1</div>
+    <div ng-switch-when="2">你选择的是2</div>
+    <div ng-switch-when="3">你选择的是3</div>
+    <div ng-switch-default>你什么都没有选</div>
+  </div>
+</body>
+
+</html>

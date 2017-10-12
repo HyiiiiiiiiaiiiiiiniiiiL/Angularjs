@@ -1,2 +1,2 @@
 # Angularjs
-From now,i will upgrade this repository every day
+it is easy for a new learner
